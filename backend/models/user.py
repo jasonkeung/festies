@@ -1,26 +1,18 @@
-from firebase_admin import firestore
-from marshmallow import fields, post_load, Schema
+USER_SCHEMA = {
+    "age": int,
+    "name": str,
+}
 
 
-class User(object):
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
+class User:
+    def __init__(self, kwargs):
+        # check kwargs
+        if kwargs.keys() != USER_SCHEMA.keys():
+            raise TypeError(f"Unexpected arg(s): {kwargs.keys() - USER_SCHEMA.keys()}")
+        kwargs_schema = {key: type(val) for key, val in kwargs.items()}
+        if kwargs_schema != USER_SCHEMA:
+            raise TypeError(
+                f"Given schema {kwargs_schema} does not match expected schema {USER_SCHEMA}"
+            )
 
-
-class UserSchema(Schema):
-    name = fields.Str()
-    age = fields.Number()
-
-    @post_load
-    def make_user(self, data, **kwargs):  # may need to add **kwargs
-        users_collection = firestore.client().collection("users")
-        # create a unique UserId here
-        res = users_collection.document("userid1").set(
-            {
-                "name": data["name"],
-                "age": data["age"],
-            }
-        )
-
-        return User(**data)
+        self.__dict__.update(kwargs)
