@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "425421446091",
+    "project_id": "festies-9a5ca",
+    "storage_bucket": "festies-9a5ca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:425421446091:android:b93e3936b07c8c9843b44e",
+        "android_client_info": {
+          "package_name": "com.example.festies"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "425421446091-fg8p0l1i1mi4em9ikmgj351opde7vfvp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZKlSVh937dEfuceujKYGRf3GcAzQ9n7s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "425421446091-fg8p0l1i1mi4em9ikmgj351opde7vfvp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "425421446091-qsgs53e7j9kffv3ecu39jg5eqhcjkioi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.jkeung.festies"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
