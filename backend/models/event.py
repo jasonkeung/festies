@@ -10,7 +10,9 @@ class Event:
     def __init__(self, kwargs):
         # check kwargs
         if kwargs.keys() != EVENT_SCHEMA.keys():
-            raise TypeError(f"Unexpected arg(s): {kwargs.keys() - EVENT_SCHEMA.keys()}")
+            raise TypeError(
+                f"Unexpected arg(s): {(kwargs.keys() - EVENT_SCHEMA.keys()) or (EVENT_SCHEMA.keys() - kwargs.keys())}"
+            )
         kwargs_schema = {key: type(val) for key, val in kwargs.items()}
         if kwargs_schema != EVENT_SCHEMA:
             raise TypeError(

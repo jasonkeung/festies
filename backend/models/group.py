@@ -13,7 +13,9 @@ class Group:
 
         # check kwargs
         if kwargs.keys() != GROUP_SCHEMA.keys():
-            raise TypeError(f"Unexpected arg(s): {kwargs.keys() - GROUP_SCHEMA.keys()}")
+            raise TypeError(
+                f"Unexpected arg(s): {(kwargs.keys() - GROUP_SCHEMA.keys()) or (GROUP_SCHEMA.keys() - kwargs.keys())}"
+            )
         kwargs_schema = {key: type(val) for key, val in kwargs.items()}
         if kwargs_schema != GROUP_SCHEMA:
             raise TypeError(
