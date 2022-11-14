@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
+
+import 'group.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,23 +9,32 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  static const String _title = 'Festies';
+
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(home: HomePage());
+    return MaterialApp(
+      title: _title,
+      home: const HomePage(),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        brightness: Brightness.light,
+        primaryColor: Colors.blueGrey,
+      ),
+    );
   }
 }
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Scaffold(
+      body: const Center(
+        child: GroupCardList(),
+      ),
+      appBar: AppBar(title: const Text('test')),
+    );
   }
 }
